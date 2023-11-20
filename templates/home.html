@@ -2,11 +2,13 @@
 {% load thumbnail %}
 
 {% block body %}
-    {% for post in posts%} 
+    {% for post in posts%}
+        <a href="{% url 'writeups:detail' post.id %}" style="display: inline-block;">
         {{ post.text }}
         {% thumbnail post.image "200x200" crop="center" as im %}
         <img src="{{ im.url}}" width="{{ im.width}}" height="{{ im.height}">
         {% endthumbnail %}
+    </a>
         <hr>
     {%endfor %}
 {% endblock %}
