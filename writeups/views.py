@@ -1,6 +1,8 @@
 from typing import Any
 #  ccbv.co.uk
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, FormView
+
+from .forms import PostForm
 from .models import Post
 
 class HomePageView(TemplateView):
@@ -14,3 +16,14 @@ class HomePageView(TemplateView):
 class PostDetailView(DetailView):
     template_name = "detail.html"
     model = Post
+
+
+class AddPostView(FormView):
+    template_name = "new_post.html"
+    form_class = PostForm
+    success_url = "/"
+
+    def form_valid(self, form):
+        print("This was valid")
+
+        return super().form_valid(form)
