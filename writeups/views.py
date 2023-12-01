@@ -10,7 +10,7 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.all()
+        context['posts'] = Post.objects.all().order_by('-id')
         return context
     
 class PostDetailView(DetailView):
@@ -24,6 +24,9 @@ class AddPostView(FormView):
     success_url = "/"
 
     def form_valid(self, form):
-        print("This was valid")
+        new_object = Post.objects.create(
+            text=form.cleaned_data['text'],
+            image=form.cleaned_data['image']
+        )
 
         return super().form_valid(form)

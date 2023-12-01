@@ -2,6 +2,9 @@
 {% load thumbnail %}
 
 {% block body %}
+
+    <a href="{% url 'writeups:post' %}">Add a new post </a>
+    <hr>
     {% for post in posts%}
         <a href="{% url 'writeups:detail' post.id %}" style="display: inline-block;">
         {{ post.text }}
