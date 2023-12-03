@@ -2,14 +2,20 @@
 {% load thumbnail %}
 
 {% block body %}
-    <hr>
-    {% for post in posts%}
-        <a href="{% url 'writeups:detail' post.id %}" style="display: inline-block;">
-        {{ post.text }}
-        {% thumbnail post.image "200x200" crop="center" as im %}
-        <img src="{{ im.url}}" width="{{ im.width}}" height="{{ im.height}">
-        {% endthumbnail %}
-    </a>
+    
+    {% for post in posts%}  
+        <div class="card" style="width: 18rem;">
+            {% thumbnail post.image "200x200" crop="center" as im %}
+            <img src="{{ im.url}}" class="card-img-top" alt="...">
+            {% endthumbnail %}
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">{{ post.text }}</p>
+          <a href="{% url 'writeups:detail' post.id %}" class="btn btn-primary">View Full Image</a>
+        </div>
+      </div>
+
+
         <hr>
     {%endfor %}  
 {% endblock %}
