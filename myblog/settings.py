@@ -46,6 +46,10 @@ INSTALLED_APPS = [
 
     'writeups',
     'feed',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
 ]
 
 MIDDLEWARE = [
