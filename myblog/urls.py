@@ -18,7 +18,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path
-from django.conf.urls import include
+from django.conf.urls import include, url
 
 from writeups import urls as writeups_urls 
 from feed import urls as feed_urls 
@@ -27,7 +27,8 @@ from feed import urls as feed_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(writeups_urls, namespace='writeups')),
-    path('', include(feed_urls, namespace='feed'))
+    path('', include(feed_urls, namespace='feed')),
+    url("", include("allauth.urls"))
 ] 
 
 if settings.DEBUG: 
