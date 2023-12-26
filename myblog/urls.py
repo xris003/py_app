@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(writeups_urls, namespace='writeups')),
     path('', include(feed_urls, namespace='feed')),
-    urls("", include("allauth.urls"))
+    # urls("", include("allauth.urls"))
 ] 
 
 if settings.DEBUG: 
